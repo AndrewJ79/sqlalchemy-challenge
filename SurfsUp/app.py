@@ -18,8 +18,8 @@ Base.prepare(autoload_with=engine)
 print("Available tables:", Base.classes.keys())
 
 # Map the tables to variables
-Measurement = Base.classes.measurement  # Replace 'measurement' with the actual table name if different
-Station = Base.classes.station          # Replace 'station' with the actual table name if different
+Measurement = Base.classes.measurement  
+Station = Base.classes.station          
 
 # Create a session to link Python to the database
 session = Session(engine)
@@ -35,8 +35,8 @@ def welcome():
         f"/api/v1.0/precipitation<br/>"
         f"/api/v1.0/stations<br/>"
         f"/api/v1.0/tobs<br/>"
-        f"/api/v1.0/<start><br/>"
-        f"/api/v1.0/<start>/<end><br/>"
+        f"/api/v1.0/&lt;start&gt;<br/>"  # Escape '<' and '>' for HTML
+        f"/api/v1.0/&lt;start&gt;/&lt;end&gt;<br/>"
     )
 
 @app.route("/api/v1.0/precipitation")
